@@ -10,7 +10,9 @@
 
 - 📫 Como entrar em contato comigo **davidfreitassouza081@gmail.com**
 
-- ⚡ Pretendo cursar **Ciências da Computação**
+-   💬  Quero me especializaew em web e mobile 
+
+- ⚡ Pretendo cursar **Ciências da Computação  e Engenharia de Sotware**   
 
 <h3 align="left">Conecte-se comigo:</h3>
 <p align="esquerda">
