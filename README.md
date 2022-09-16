@@ -1,6 +1,8 @@
+[![ Digitando SVG ](https://readme-typing-svg.herokuapp.com/?color=red=35¢er=true&vCenter=true&width=1000&lines=HELLO,+MY+NAME+is+David+Felipe;Sou +17+anos+;eu+do+Brasil;eu+estudo+sistemas+desenvolvimento+no+Senai;Seja+Bem-vindo!+:%29)](https://git.io/typing-svg)
+
 [![ MasterHead ](https://1.bp.blogspot.com/-7A4WynwLsMw/XbBpCXG8fHI/AAAAAAAAMt4/uOa1bpLskYgrwGbllhSu2SDj_Mig8SXJQCLcBGAsYHQ/s1600/2000_600px.gif)](https://rishavchanda.io)
-<h1 align="center">Iae 👋, eu sou David</h1>
-<h3 align="center">Um futuro Engenheiro de Software</h3>
+<h1 align="center">Hi 👋, I'm David</h1>
+<h3 align="center">a programming student</h3>
 <img align="right" alt="Coding" width="400" src="https://cdn.dribbble.com/users/2401141/screenshots/5487982/developers-gif-showcase.gif">
 
 
