@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MineCursos.Models.Cursos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Lista de Cursos
+ <a class="btn btn-success" href="/Cursos/Criar">Novo</a>    
+    
+</h2>
+<div>
+    Total de cursos: @ViewBag.qtdCursos
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Curso</th>
+            <th>Habilidade</th>
+            <th>Modalidade</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.CURSOID</th>
+                <th>@item.CURSODESCRICAO</th>
+                <th>@item.CURSOCODHABILIDADE</th>
+                <th>@item.CURSOMODALIDADE</th>
+
+                <td>
+
+                    <a href="/Cursos/editar?id=@item.CURSOID"><button type="button" class="btn btn-warning">Editar</button></a>
+                    <a href="/Cursos/exibir?id=@item.CURSOID"><button type="button" class="btn btn-primary">Exibir</button></a>
+                    <a href="/Cursos/deletar?id=@item.CURSOID"><button type="button" class="btn btn-danger">Deletar</button></a>
+                </td>
+                
+            </tr>
+
+       
+
+            
+
+       
+
+    }
+           </tbody>
+
+
+
+
+    </table>
+
+<div>
+
+    <a href="/home/Projetos" class="btn btn-danger">Voltar</a>
+</div>
+
+

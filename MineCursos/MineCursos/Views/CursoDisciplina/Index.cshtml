@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MineCursos.Models.GrupoCursoQuantidadeDisciplina>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <div class="row">
+        <h2>Dados dos Cursos</h2>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <a href="/CursoDisciplina/DisciplinaporCurso?id=@item.Codigo">
+                <div class="col-md-2 divCursoItemDashboard">
+                    <div>
+                        <h2>@item.Quantidade</h2>
+                    </div>
+                    <div>
+                        @item.Descricao:
+                    </div>
+
+
+
+                </div>
+            </a>
+
+        }
+
+    </div>
+    <br />
+    <a href="/home/Projetos" class="btn btn-danger">Voltar</a>
+</div>
+
+
+
+
+
+
+
+
+
+

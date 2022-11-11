@@ -1,0 +1,35 @@
+﻿@model MineCursos.Models.Disciplinas
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<div>
+
+
+
+    <form action="/Disciplinas/ConfirmeDelete?id=@Model.DISID" method="post">
+        <div>
+            <class ="form-group">
+                <label>Descricao</label>
+                <label>@Model.DISDESCRIACAO</label>
+        </div>
+        <div>
+            <class ="form-group">
+                <label>Curso</label>
+                <label>@Model.Cursos.CURSODESCRICAO</label>
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label>CH</label>
+                <label>@Model.DISCH</label>
+        </div>
+
+        <a href="/Disciplinas/index" class="btn btn-info">Voltar</a>
+        <button class="btn btn-danger" type="submit">Deletar</button>
+
+    </form>
+</div>

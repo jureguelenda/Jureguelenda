@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MineCursos.Models.Disciplinas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    Lista de Disciplinas
+    <a class="btn btn-success" href="/Disciplinas/Criar">Novo</a>
+
+</h2>
+<div>
+    Total de cursos: @ViewBag.qtdDisciplinas
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Disciplinas</th>
+            <th>Curso</th>
+            <th>Carga Horaria</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.DISID</th>
+                <th>@item.DISDESCRIACAO</th>
+                <th>@Html.DisplayFor(modelItem => item.Cursos.CURSODESCRICAO)</th>
+                <th>@item.DISCH</th>
+
+                <td>
+
+                    <a href="/Disciplinas/editar?id=@item.DISID"><button type="button" class="btn btn-warning">Editar</button></a>
+                    <a href="/Disciplinas/exibir?id=@item.DISID"><button type="button" class="btn btn-primary">Exibir</button></a>
+                    <a href="/Disciplinas/deletar?id=@item.DISID"><button type="button" class="btn btn-danger">Deletar</button></a>
+                </td>
+
+            </tr>
+
+
+
+
+
+
+
+        }
+    </tbody>
+
+
+
+
+</table>
+
+<div>
+
+    <a href="/home/Projetos" class="btn btn-danger">Voltar</a>
+</div>
+
+

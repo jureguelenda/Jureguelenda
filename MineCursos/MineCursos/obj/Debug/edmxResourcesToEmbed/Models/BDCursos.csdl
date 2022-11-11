@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdCursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cursos">
+    <Key>
+      <PropertyRef Name="CURSOID" />
+    </Key>
+    <Property Name="CURSOID" Type="Int32" Nullable="false" />
+    <Property Name="CURSODESCRICAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CURSOCODHABILIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CURSOMODALIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Disciplinas" Relationship="Self.FK__Disciplin__CURSO__276EDEB3" FromRole="Cursos" ToRole="Disciplinas" />
+  </EntityType>
+  <EntityType Name="Disciplinas">
+    <Key>
+      <PropertyRef Name="DISID" />
+    </Key>
+    <Property Name="DISID" Type="Int32" Nullable="false" />
+    <Property Name="DISDESCRIACAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CURSOID" Type="Int32" />
+    <Property Name="DISCH" Type="Int32" />
+    <NavigationProperty Name="Cursos" Relationship="Self.FK__Disciplin__CURSO__276EDEB3" FromRole="Disciplinas" ToRole="Cursos" />
+  </EntityType>
+  <Association Name="FK__Disciplin__CURSO__276EDEB3">
+    <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+    <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cursos">
+        <PropertyRef Name="CURSOID" />
+      </Principal>
+      <Dependent Role="Disciplinas">
+        <PropertyRef Name="CURSOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdCursosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+    <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" />
+    <AssociationSet Name="FK__Disciplin__CURSO__276EDEB3" Association="Self.FK__Disciplin__CURSO__276EDEB3">
+      <End Role="Cursos" EntitySet="Cursos" />
+      <End Role="Disciplinas" EntitySet="Disciplinas" />
+    </AssociationSet>
+    <EntitySet Name="GrupoCursoQuantidadeDisciplina" EntityType="bdCursosModel.GrupoCursoQuantidadeDisciplina" />
+    <EntitySet Name="Colaborador" EntityType="bdCursosModel.Colaborador" />
+  </EntityContainer>
+  <EntityType Name="GrupoCursoQuantidadeDisciplina">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Habilidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Modalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Quantidade" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Colaborador">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioSenha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

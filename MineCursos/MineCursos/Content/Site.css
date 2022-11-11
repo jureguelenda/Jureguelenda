@@ -1,0 +1,78 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+
+
+
+
+.divCursoItemDashboard {
+    background-color: forestgreen;
+    font-size: 10px;
+    margin: 2px;
+    height: 115px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+
+
+
+
+.divlogin {
+    text-align: center;
+    /*   justify-items:center;*/
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+
+.divitems {
+    margin: 5px;
+    font-size: 20px;
+}
+
+.backlogin {
+    background-image: url('https://img.freepik.com/vetores-gratis/fundo-branco-abstrato_23-2148810113.jpg?w=2000');
+}
+
+.inputLogin {
+    height: 40px;
+    width: 500px;
+    border-radius: 10px;
+    border-inline-color: cadetblue;
+    border-block-color: cadetblue;
+}
+
+.btnLogin {
+    margin-left: 50px;
+}

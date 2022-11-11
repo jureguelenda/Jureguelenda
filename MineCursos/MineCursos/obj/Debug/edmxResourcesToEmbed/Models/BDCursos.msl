@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdCursosModelStoreContainer" CdmEntityContainer="bdCursosEntities">
+    <EntitySetMapping Name="Cursos">
+      <EntityTypeMapping TypeName="bdCursosModel.Cursos">
+        <MappingFragment StoreEntitySet="Cursos">
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+          <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
+          <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
+          <ScalarProperty Name="CURSOMODALIDADE" ColumnName="CURSOMODALIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disciplinas">
+      <EntityTypeMapping TypeName="bdCursosModel.Disciplinas">
+        <MappingFragment StoreEntitySet="Disciplinas">
+          <ScalarProperty Name="DISID" ColumnName="DISID" />
+          <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+          <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrupoCursoQuantidadeDisciplina">
+      <EntityTypeMapping TypeName="bdCursosModel.GrupoCursoQuantidadeDisciplina">
+        <MappingFragment StoreEntitySet="GrupoCursoQuantidadeDisciplina">
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="Modalidade" ColumnName="Modalidade" />
+          <ScalarProperty Name="Habilidade" ColumnName="Habilidade" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colaborador">
+      <EntityTypeMapping TypeName="bdCursosModel.Colaborador">
+        <MappingFragment StoreEntitySet="Colaborador">
+          <ScalarProperty Name="UsuarioSenha" ColumnName="UsuarioSenha" />
+          <ScalarProperty Name="UsuarioLogin" ColumnName="UsuarioLogin" />
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

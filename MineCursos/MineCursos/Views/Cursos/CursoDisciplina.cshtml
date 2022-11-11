@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MineCursos.Models.Cursos>
+
+@{
+    ViewBag.Title = "CursoDisciplina";
+}
+
+<h2>Curso e Disciplina</h2>
+
+<table class="table">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Disciplinas</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.CURSODESCRICAO</th>
+                    <th>@ViewBag.qtdDisciplinas</th>
+                  
+
+                  
+
+                </tr>
+
+
+
+
+
+
+
+            }
+        </tbody>
+
+
+
+
+    </table>
+
+    <div>
+
+        <a href="/home/index" class="btn btn-danger">Voltar</a>
+    </div>

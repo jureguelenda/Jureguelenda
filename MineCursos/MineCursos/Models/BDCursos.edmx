@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bdCursosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioLogin" Type="varchar" MaxLength="100" />
+          <Property Name="UsuarioSenha" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="CURSOID" />
+          </Key>
+          <Property Name="CURSOID" Type="int" Nullable="false" />
+          <Property Name="CURSODESCRICAO" Type="varchar" MaxLength="100" />
+          <Property Name="CURSOCODHABILIDADE" Type="varchar" MaxLength="100" />
+          <Property Name="CURSOMODALIDADE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Disciplinas">
+          <Key>
+            <PropertyRef Name="DISID" />
+          </Key>
+          <Property Name="DISID" Type="int" Nullable="false" />
+          <Property Name="DISDESCRIACAO" Type="varchar" MaxLength="500" />
+          <Property Name="CURSOID" Type="int" />
+          <Property Name="DISCH" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQuantidadeDisciplina' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GrupoCursoQuantidadeDisciplina">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" />
+          <Property Name="Habilidade" Type="varchar" MaxLength="100" />
+          <Property Name="Modalidade" Type="varchar" MaxLength="100" />
+          <Property Name="Quantidade" Type="int" />
+        </EntityType>
+        <Association Name="FK__Disciplin__CURSO__276EDEB3">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="CURSOID" />
+            </Principal>
+            <Dependent Role="Disciplinas">
+              <PropertyRef Name="CURSOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdCursosModelStoreContainer">
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupoCursoQuantidadeDisciplina" EntityType="Self.GrupoCursoQuantidadeDisciplina" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GrupoCursoQuantidadeDisciplina].[Codigo] AS [Codigo], 
+    [GrupoCursoQuantidadeDisciplina].[Descricao] AS [Descricao], 
+    [GrupoCursoQuantidadeDisciplina].[Habilidade] AS [Habilidade], 
+    [GrupoCursoQuantidadeDisciplina].[Modalidade] AS [Modalidade], 
+    [GrupoCursoQuantidadeDisciplina].[Quantidade] AS [Quantidade]
+    FROM [dbo].[GrupoCursoQuantidadeDisciplina] AS [GrupoCursoQuantidadeDisciplina]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Disciplin__CURSO__276EDEB3" Association="Self.FK__Disciplin__CURSO__276EDEB3">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdCursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="CURSOID" />
+          </Key>
+          <Property Name="CURSOID" Type="Int32" Nullable="false" />
+          <Property Name="CURSODESCRICAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CURSOCODHABILIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CURSOMODALIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disciplinas" Relationship="Self.FK__Disciplin__CURSO__276EDEB3" FromRole="Cursos" ToRole="Disciplinas" />
+        </EntityType>
+        <EntityType Name="Disciplinas">
+          <Key>
+            <PropertyRef Name="DISID" />
+          </Key>
+          <Property Name="DISID" Type="Int32" Nullable="false" />
+          <Property Name="DISDESCRIACAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CURSOID" Type="Int32" />
+          <Property Name="DISCH" Type="Int32" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK__Disciplin__CURSO__276EDEB3" FromRole="Disciplinas" ToRole="Cursos" />
+        </EntityType>
+        <Association Name="FK__Disciplin__CURSO__276EDEB3">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="CURSOID" />
+            </Principal>
+            <Dependent Role="Disciplinas">
+              <PropertyRef Name="CURSOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdCursosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" />
+          <AssociationSet Name="FK__Disciplin__CURSO__276EDEB3" Association="Self.FK__Disciplin__CURSO__276EDEB3">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+          </AssociationSet>
+          <EntitySet Name="GrupoCursoQuantidadeDisciplina" EntityType="bdCursosModel.GrupoCursoQuantidadeDisciplina" />
+          <EntitySet Name="Colaborador" EntityType="bdCursosModel.Colaborador" />
+        </EntityContainer>
+        <EntityType Name="GrupoCursoQuantidadeDisciplina">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Habilidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quantidade" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioLogin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioSenha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdCursosModelStoreContainer" CdmEntityContainer="bdCursosEntities">
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="bdCursosModel.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+                <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
+                <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
+                <ScalarProperty Name="CURSOMODALIDADE" ColumnName="CURSOMODALIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplinas">
+            <EntityTypeMapping TypeName="bdCursosModel.Disciplinas">
+              <MappingFragment StoreEntitySet="Disciplinas">
+                <ScalarProperty Name="DISID" ColumnName="DISID" />
+                <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
+                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+                <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupoCursoQuantidadeDisciplina">
+            <EntityTypeMapping TypeName="bdCursosModel.GrupoCursoQuantidadeDisciplina">
+              <MappingFragment StoreEntitySet="GrupoCursoQuantidadeDisciplina">
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Modalidade" ColumnName="Modalidade" />
+                <ScalarProperty Name="Habilidade" ColumnName="Habilidade" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colaborador">
+            <EntityTypeMapping TypeName="bdCursosModel.Colaborador">
+              <MappingFragment StoreEntitySet="Colaborador">
+                <ScalarProperty Name="UsuarioSenha" ColumnName="UsuarioSenha" />
+                <ScalarProperty Name="UsuarioLogin" ColumnName="UsuarioLogin" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
